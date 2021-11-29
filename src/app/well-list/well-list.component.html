@@ -1,0 +1,21 @@
+<app-add-well (wellForm)="getWellData($event)" [sourceRef]="Source"
+[index1]="index1"></app-add-well>
+
+<table class="table table-bordered">
+  <thead>
+    <tr class="table-primary">
+      <th scope="col">Name</th>
+      <th scope="col">Type</th>
+      <th scope="col">Source</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let detail of wells; let i=index">
+      <td style="color:maroon" >{{ detail.Name }}</td>
+      <td [ngStyle]="{'color': detail.Type=='rls'? 'red' : 'black'}"
+      [ngClass]="{'BgGreen': detail.Type=='rls' ,'BgPink': detail.Type=='esp' }"
+      >{{ detail.Type }}</td>
+      <td style="color:maroon" class="sourc" #sourceRef (click)="sendSource(i)">{{ detail.Source }}</td>
+    </tr>
+  </tbody>
+</table>
